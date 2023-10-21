@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:to_do_app/modules/notes/cubit/cubit.dart';
 import 'package:to_do_app/modules/notes/cubit/states.dart';
-import 'package:to_do_app/modules/splash_screen.dart';
+import 'package:to_do_app/modules/splash/splash_screen.dart';
 import 'modules/Tasks/cubit/cubit.dart';
 import 'modules/Tasks/cubit/state.dart';
 

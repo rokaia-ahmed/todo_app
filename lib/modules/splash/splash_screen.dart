@@ -1,19 +1,21 @@
 
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:to_do_app/modules/welcomeScreen.dart';
-import '../shared/colors.dart';
+import 'package:to_do_app/modules/welcome/screens/welcome_screen.dart';
+
+import '../../core/colors.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
   @override
   State<SplashScreen> createState() => _BuildSplashScreenState();
 }
 class _BuildSplashScreenState extends State<SplashScreen> {
- void initState(){
+ @override
+  void initState(){
  super.initState();
-  Timer( Duration(seconds:5,),
+  Timer( const Duration(seconds:5,),
      ()=> Navigator.pushReplacement(context,
-         MaterialPageRoute(builder:(context)=>WelcomeScreen()),
+         MaterialPageRoute(builder:(context)=>const WelcomeScreen()),
      ),
  );
  }
@@ -30,7 +32,7 @@ class _BuildSplashScreenState extends State<SplashScreen> {
                fit: BoxFit.cover,
                color: Colors.white,
              ),
-             Text('Tasks',
+             const Text('Tasks',
                style:TextStyle(
                  color: Colors.white,
                  fontSize: 35,

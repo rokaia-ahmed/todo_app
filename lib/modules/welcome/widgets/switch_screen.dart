@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
-import 'package:to_do_app/modules/notes/home_notes.dart';
-import '../shared/colors.dart';
-import '../shared/components.dart';
-import 'Tasks/home_Screen.dart';
+import 'package:to_do_app/modules/notes/screens/home_notes.dart';
+import '../../../core/colors.dart';
+import '../../../core/components.dart';
+import '../../Tasks/screens/home_screen.dart';
 
 void switchDialog({
   required  context,
@@ -13,11 +13,11 @@ void switchDialog({
       builder: (BuildContext context){
         return AlertDialog(
           backgroundColor: kLightGrey,
-          contentPadding: EdgeInsets.all(20),
+          contentPadding: const EdgeInsets.all(20),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
-          title: Text('start with ',
+          title: const Text('start with ',
             style: TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,
@@ -29,7 +29,7 @@ void switchDialog({
             children: [
               GestureDetector(
                 onTap: (){
-                  navigateTo(context: context, screen:HomeScreen());
+                  navigateTo(context: context, screen:const HomeScreen());
                 },
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -39,8 +39,8 @@ void switchDialog({
                     width:100 ,
                       height: 100,
                     ),
-                    SizedBox(height: 5,),
-                    Text('Tasks ',
+                    const SizedBox(height: 5,),
+                    const Text('Tasks ',
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
@@ -50,12 +50,12 @@ void switchDialog({
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 25,
               ),
               GestureDetector(
                 onTap: (){
-                  navigateTo(context: context, screen:HomeNotes());
+                  navigateTo(context: context, screen:const HomeNotes());
                 },
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -65,8 +65,8 @@ void switchDialog({
                       width:100 ,
                       height: 100,
                     ),
-                    SizedBox(height: 5,),
-                    Text('Notes',
+                    const SizedBox(height: 5,),
+                    const Text('Notes',
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,

@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:to_do_app/shared/colors.dart';
+import '../../../core/colors.dart';
 
 void showTask({
   required BuildContext context,
@@ -20,71 +20,71 @@ void showTask({
       children: [
         Row(
           children: [
-            Text('Title:',
+            const Text('Title:',
               style:TextStyle(
                 color: Colors.white,
                 fontSize: 20,
               ) ,
             ),
-            SizedBox(width: 5,),
+            const SizedBox(width: 5,),
             Text(title,
-              style:TextStyle(
+              style:const TextStyle(
                 color:kOrange,
                 fontSize: 20,
               ) ,
             ),
           ],
         ),
-        SizedBox(height: 20,),
+        const SizedBox(height: 20,),
         Row(
           children: [
-            Text('List:',
+            const Text('List:',
               style:TextStyle(
                 color: Colors.white,
                 fontSize: 20,
               ) ,
             ),
-            SizedBox(width: 5,),
+            const SizedBox(width: 5,),
             Text('#$list',
-              style:TextStyle(
+              style:const TextStyle(
                 color: kOrange,
                 fontSize: 20,
               ) ,
             ),
           ],
         ),
-        SizedBox(height: 20,),
+        const SizedBox(height: 20,),
         Row(
           children: [
-            Text('time:',
+            const Text('time:',
               style:TextStyle(
                 color: Colors.white,
                 fontSize: 20,
               ) ,
             ),
-            SizedBox(width: 5,),
+            const SizedBox(width: 5,),
             Text(time,
-              style:TextStyle(
+              style:const TextStyle(
                 color: kOrange,
                 fontSize: 20,
               ) ,
             ),
           ],
         ),
-        SizedBox(height: 20,),
+        const SizedBox(height: 20,),
         Row(
           children: [
-            Text('Description:',
+            const Text('Description:',
               style:TextStyle(
                 color: Colors.white,
                 fontSize: 20,
               ) ,
             ),
-            SizedBox(width: 5,),
+            const SizedBox(width: 5,),
             Expanded(
               child: Text(dec,
                 maxLines: 2,
-                style:TextStyle(
+                style:const TextStyle(
                   color: kOrange,
                   fontSize:15,
                 ) ,
@@ -92,7 +92,7 @@ void showTask({
             ),
           ],
         ),
-        SizedBox(height: 30),
+        const SizedBox(height: 30),
       ],
     ) ,
   ),

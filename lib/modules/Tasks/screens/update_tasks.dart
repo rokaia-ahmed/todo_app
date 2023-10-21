@@ -2,30 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:to_do_app/modules/Tasks/cubit/cubit.dart';
 import 'package:to_do_app/modules/Tasks/cubit/state.dart';
-import '../../shared/colors.dart';
-import '../../shared/components.dart';
-import 'home_Screen.dart';
+import '../../../core/colors.dart';
+import '../../../core/components.dart';
+import 'home_screen.dart';
 
 
 class UpdateTaskScreen extends StatelessWidget {
-  int id ;
-  String title ;
-  String list ;
-  String time ;
-  String description ;
+ final int id ;
+ final String title ;
+ final String list ;
+ final String time ;
+ final String description ;
 
-  UpdateTaskScreen({
+  UpdateTaskScreen({super.key,
     required this.id,
     required this.title,
     required this.time ,
     required this.list,
     required this.description });
 
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  var titleController = TextEditingController();
-  var listController  = TextEditingController();
-  var timeController  = TextEditingController();
-  var descriptionController  = TextEditingController();
+ final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+ final titleController = TextEditingController();
+ final listController  = TextEditingController();
+ final timeController  = TextEditingController();
+ final descriptionController  = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class UpdateTaskScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Center(
+                      const Center(
                         child: Text('Add Tasks',
                           style: TextStyle(
                             color: Colors.white,
@@ -57,36 +57,36 @@ class UpdateTaskScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: 30),
-                      Text('Title',
+                      const SizedBox(height: 30),
+                      const Text('Title',
                         style: TextStyle(
                           color: kOrange,
                           fontSize: 20,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       buildTextFormField(
                           controller: titleController,
                       ),
-                      SizedBox(height: 10),
-                      Text('Add to List',
+                      const SizedBox(height: 10),
+                      const Text('Add to List',
                         style: TextStyle(
                           color: kOrange,
                           fontSize: 20,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       buildTextFormField(
                           controller: listController,
                       ),
-                      SizedBox(height: 10),
-                      Text('Time',
+                      const SizedBox(height: 10),
+                      const Text('Time',
                         style: TextStyle(
                           color: kOrange,
                           fontSize: 20,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       buildTextFormField(
                           controller: timeController ,
                           onTap: (){
@@ -94,7 +94,7 @@ class UpdateTaskScreen extends StatelessWidget {
                                 initialTime:TimeOfDay.now())
                                 .then((value){
                               timeController.text = value!.format(context).toString();
-                              print(value.format(context).toString());
+                              debugPrint(value.format(context).toString());
                             });
                             /* showDatePicker(context: context,
                               initialDate:DateTime.now(),
@@ -106,14 +106,14 @@ class UpdateTaskScreen extends StatelessWidget {
                           });*/
                           }
                       ),
-                      SizedBox(height: 10),
-                      Text('Description',
+                      const SizedBox(height: 10),
+                      const Text('Description',
                         style: TextStyle(
                           color: kOrange,
                           fontSize: 20,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Container(
                         height:150 ,
                         width:double.infinity ,
@@ -121,15 +121,15 @@ class UpdateTaskScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(15),
                           color: kLightGrey,
                         ),
-                        padding:EdgeInsets.only(left: 10) ,
+                        padding:const EdgeInsets.only(left: 10) ,
                         child:buildTextFieldWithoutBorder(
                             controller: descriptionController,
                             hintText:'Add description her',
-                            hintStyle:TextStyle(
+                            hintStyle:const TextStyle(
                               color: Colors.grey,
                             )),
                       ),
-                      SizedBox(height: 25),
+                      const SizedBox(height: 25),
                       Center(
                         child: buildButton(
                           onPressed: (){
@@ -141,7 +141,7 @@ class UpdateTaskScreen extends StatelessWidget {
                               time:timeController.text,
                               dec: descriptionController.text,
                           ).then((value){
-                            navigateTo(context: context, screen:HomeScreen());
+                            navigateTo(context: context, screen:const HomeScreen());
                           });
                           },
                           text: 'Update Task',
@@ -149,7 +149,7 @@ class UpdateTaskScreen extends StatelessWidget {
                           height: 30,
                         ),
                       ),
-                      SizedBox(height: 30),
+                      const SizedBox(height: 30),
                       buildLogo(),
                     ],
                   ),

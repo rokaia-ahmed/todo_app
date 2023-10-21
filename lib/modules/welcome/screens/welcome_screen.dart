@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
-import '../shared/colors.dart';
-import '../shared/components.dart';
-import 'Switch_screen.dart';
+import '../../../core/colors.dart';
+import '../../../core/components.dart';
+import '../widgets/switch_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -15,24 +15,24 @@ class WelcomeScreen extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
-              SizedBox(
-                height: 50,
+              const SizedBox(
+                height: 20,
               ),
               buildLogo(),
-              SizedBox(
-                height: 20,
+              const SizedBox(
+                height: 10,
               ),
               Image.asset('assets/images/9069 [Converted] (1).png',
               height: 300, width: 250,
               ),
-              Text('Welcome to tasks',
+              const Text('Welcome to tasks',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 25,
               ),
               ),
-             Padding(
-            padding: const EdgeInsets.all(20.0),
+             const Padding(
+            padding: EdgeInsets.all(20.0),
             child: Text('An application to write your daily personal, work and other tasks',
               style: TextStyle(
                 color: Colors.white,
@@ -41,9 +41,6 @@ class WelcomeScreen extends StatelessWidget {
               ),
               ),
           ),
-              SizedBox(
-                height: 20,
-              ),
               buildButton(
                 onPressed: (){
                   switchDialog(

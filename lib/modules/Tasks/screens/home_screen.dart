@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:to_do_app/modules/Tasks/cubit/cubit.dart';
 import 'package:to_do_app/modules/Tasks/cubit/state.dart';
-import 'package:to_do_app/modules/welcomeScreen.dart';
-import '../../shared/colors.dart';
-import '../../shared/components.dart';
+import 'package:to_do_app/modules/welcome/screens/welcome_screen.dart';
+import '../../../core/colors.dart';
+import '../../../core/components.dart';
 import 'add_task_screen.dart';
 import 'delete_task.dart';
 import 'show_task.dart';
@@ -28,12 +28,16 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height:20 ,
                   ),
                   Container(
                     height:60 ,
                     width:double.infinity,
+                    decoration: BoxDecoration(
+                      color: kPrimaryBlue ,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
                     child:Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -42,16 +46,16 @@ class HomeScreen extends StatelessWidget {
                           height: 25,
                           child: IconButton(
                             onPressed:(){
-                             navigateTo(context: context, screen:WelcomeScreen());
+                             navigateTo(context: context, screen:const WelcomeScreen());
                             },
-                            padding: EdgeInsets.all(0.0),
-                            icon: Icon(Icons.arrow_back_ios,
+                            padding: const EdgeInsets.all(0.0),
+                            icon: const Icon(Icons.arrow_back_ios,
                               size: 25,
                             ),
                             color: kOrange,
                           ),
                         ),
-                        Text('Simply control your time ' ,
+                        const Text('Simply control your time ' ,
                           style:TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -62,28 +66,26 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    decoration: BoxDecoration(
-                      color: kPrimaryBlue ,
-                      borderRadius: BorderRadius.circular(30),
-                    ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height:30 ,
                   ),
-                  Text('Tasks',
+                  const Text('Tasks',
                     style:TextStyle(
                         color: Colors.black,
                         fontSize: 25,
                         fontWeight: FontWeight.bold
                     ) ,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height:10 ,
                   ),
                   Expanded(
-                    child: (cubit.tasks.length >0)? ListView.separated(
-                        itemBuilder:(context,index)=> buildTask(context,index,cubit.tasks[index]),
-                        separatorBuilder: (context,index)=> SizedBox(
+                    child: (cubit.tasks.isNotEmpty)?
+                    ListView.separated(
+                        itemBuilder:(context,index)=>
+                            buildTask(context,index,cubit.tasks[index]),
+                        separatorBuilder: (context,index)=> const SizedBox(
                           height:20 ,
                         ),
                         itemCount:cubit.tasks.length): reloadWidget(
@@ -129,14 +131,17 @@ class HomeScreen extends StatelessWidget {
               color:Colors.green ,
             ),
           ),
-          Text('${map['title']}',
-            style:TextStyle(
-                color: Colors.black,
-                fontSize: 23,
-                fontWeight: FontWeight.bold
-            ) ,
+          Expanded(
+            child: Text('${map['title']}',
+              style:const TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  overflow:TextOverflow.ellipsis ,
+                  fontWeight: FontWeight.bold
+              ) ,
+            ),
           ),
-          SizedBox(width: 40),
+          const SizedBox(width: 10),
           GestureDetector(
             onTap: (){
               showTask(context: context,
@@ -146,14 +151,16 @@ class HomeScreen extends StatelessWidget {
                 dec:  map['description'] ,
               );
             },
-            child: Icon(Icons.visibility,
+            child: const Icon(Icons.visibility,
               size:30 ,
               color: Colors.blue,
             ),
           ),
+          const SizedBox(width: 10),
           GestureDetector(
             onTap: (){
-              navigateTo(context: context, screen:UpdateTaskScreen(
+              navigateTo(context: context,
+                screen:UpdateTaskScreen(
                 id: map['id'] ,
                 title: map['title'],
                 list: map['list'],

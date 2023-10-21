@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:to_do_app/modules/notes/add_notes.dart';
+import 'package:to_do_app/modules/notes/screens/add_notes.dart';
 import 'package:to_do_app/modules/notes/cubit/cubit.dart';
 import 'package:to_do_app/modules/notes/cubit/states.dart';
-import 'package:to_do_app/modules/notes/update_notes.dart';
-import '../../shared/colors.dart';
-import '../../shared/components.dart';
-import '../welcomeScreen.dart';
+import 'package:to_do_app/modules/notes/screens/update_notes.dart';
+import '../../../core/colors.dart';
+import '../../../core/components.dart';
+import '../../welcome/screens/welcome_screen.dart';
 import 'delete_note.dart';
 
 
@@ -27,12 +27,16 @@ class HomeNotes extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height:20 ,
                     ),
                     Container(
                       height:70 ,
                       width:double.infinity,
+                      decoration: BoxDecoration(
+                        color: kPrimaryBlue ,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
                       child:Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -41,16 +45,16 @@ class HomeNotes extends StatelessWidget {
                             height: 25,
                             child: IconButton(
                               onPressed:(){
-                                navigateTo(context: context, screen:WelcomeScreen());
+                                navigateTo(context: context, screen:const WelcomeScreen());
                               },
-                              padding: EdgeInsets.all(0.0),
-                              icon: Icon(Icons.arrow_back_ios,
+                              padding: const EdgeInsets.all(0.0),
+                              icon: const Icon(Icons.arrow_back_ios,
                                 size: 25,
                               ),
                               color: kOrange,
                             ),
                           ),
-                          Text('Simply write your notes ' ,
+                          const Text('Simply write your notes ' ,
                             style:TextStyle(
                               color: Colors.white,
                               fontSize: 22,
@@ -61,28 +65,24 @@ class HomeNotes extends StatelessWidget {
                           ),
                         ],
                       ),
-                      decoration: BoxDecoration(
-                        color: kPrimaryBlue ,
-                        borderRadius: BorderRadius.circular(30),
-                      ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height:30 ,
                     ),
-                    Text('Notes',
+                    const Text('Notes',
                       style:TextStyle(
                           color: Colors.black,
                           fontSize: 25,
                           fontWeight: FontWeight.bold
                       ) ,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height:10 ,
                     ),
                     Expanded(
-                      child: (cubit.notes.length >0)? ListView.separated(
+                      child: (cubit.notes.isNotEmpty)? ListView.separated(
                           itemBuilder:(context,index)=>buildNote(context,cubit.notes[index]),
-                          separatorBuilder: (context,index)=> SizedBox(
+                          separatorBuilder: (context,index)=> const SizedBox(
                             height:20 ,
                           ),
                           itemCount:cubit.notes.length)
@@ -123,22 +123,22 @@ class HomeNotes extends StatelessWidget {
         );
       } ,
       child: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
         color:kOrange.withOpacity(0.7),
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(15),
       ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text( '${note['text']}',
-              style:TextStyle(
+              style:const TextStyle(
                 color: Colors.black,
-                fontSize: 20,
+                fontSize: 16,
               ) ,
             ),
-             SizedBox(
-               height: 10,
+             const SizedBox(
+               height: 5,
              ),
              Text('${note['time']}',
                style:TextStyle(
